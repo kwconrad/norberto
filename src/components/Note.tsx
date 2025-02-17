@@ -1,14 +1,19 @@
 "use client";
 import { marked } from "marked";
 import { useState } from "react";
+import BaseNoteType from "@/types/Note";
 
-type NoteProps = {
-  id: number;
-  body: string;
+interface NoteProps extends BaseNoteType {
   isActiveNote: boolean;
-};
+  onSetActiveNote: () => void;
+}
 
-export default function Note({ id, body, isActiveNote }: NoteProps) {
+export default function Note({
+  id,
+  body,
+  isActiveNote,
+  onSetActiveNote,
+}: NoteProps) {
   const [text, setText] = useState(body);
   const changeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
@@ -19,7 +24,10 @@ export default function Note({ id, body, isActiveNote }: NoteProps) {
   };
 
   return (
-    <div className="w-80 aspect-square bg-white shadow-lg rounded-lg">
+    <div
+      className="w-80 aspect-square bg-white shadow-lg rounded-lg"
+      onClick={onSetActiveNote}
+    >
       <div className="p-4 text-neutral-800 w-full min-h-full">
         {isActiveNote ? (
           <textarea
