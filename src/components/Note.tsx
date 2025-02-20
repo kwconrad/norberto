@@ -1,7 +1,7 @@
 "use client";
 import { marked } from "marked";
 import { useState } from "react";
-import BaseNoteType from "@/types/Note";
+import { BaseNoteType } from "@/types/Note";
 import { useOnClickOutside } from "@/hooks";
 
 interface NoteProps extends BaseNoteType {

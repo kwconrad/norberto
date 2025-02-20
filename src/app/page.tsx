@@ -1,8 +1,9 @@
 "use client";
-import { Note } from "@/components";
-import BaseNoteType from "@/types/Note";
 import useSWR from "swr";
 import { useState } from "react";
+
+import { Note } from "@/components";
+import { BaseNoteType, EnrichedNoteType } from "@/types/Note";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
