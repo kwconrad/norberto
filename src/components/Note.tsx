@@ -5,6 +5,7 @@ import BaseNoteType from "@/types/Note";
 import { useOnClickOutside } from "@/hooks";
 
 interface NoteProps extends BaseNoteType {
+  isNewNote?: boolean;
   isActiveNote: boolean;
   onSetActiveNote: (activeNoteId: number | null) => void;
   onSave: (body: string) => void;
@@ -14,6 +15,7 @@ interface NoteProps extends BaseNoteType {
 export default function Note({
   id,
   body,
+  isNewNote = false,
   isActiveNote,
   onSetActiveNote,
   onSave,
@@ -29,7 +31,7 @@ export default function Note({
   };
 
   const onClickOutRef = useOnClickOutside(() => {
-    if (!isActiveNote) return;
+    if (!isActiveNote && !isNewNote) return;
     onSetActiveNote(null);
 
     if (text === body) return;
@@ -41,13 +43,21 @@ export default function Note({
     onSave(text);
   });
 
+  const textClasses = "text-lg text-neutral-800";
+
   return (
     <div
+      role="button"
       ref={onClickOutRef}
-      className="w-full aspect-square bg-white shadow-lg rounded-lg"
+      className="aspect-square w-full rounded-lg border border-neutral-100 bg-white shadow-md"
       onClick={() => onSetActiveNote(id)}
     >
-      <div className="p-4 text-neutral-800 w-full min-h-full">
+      <div className="min-h-full w-full p-4 text-neutral-800">
+        <div className="flex h-12 w-full items-center">
+          <span className="font-instrument-serif text-2xl">
+            {id === -1 ? "New Note" : `Note ${id}`}
+          </span>
+        </div>
         {isActiveNote ? (
           <textarea
             id={`note-${id}`}
@@ -55,10 +65,13 @@ export default function Note({
             value={text}
             onChange={changeText}
             placeholder="Start typing here..."
-            className="focus:outline-none w-full min-h-full text-neutral-800 h-auto resize-none"
+            className={`h-auto min-h-full w-full resize-none placeholder:text-neutral-800 focus:outline-none ${textClasses}`}
           ></textarea>
         ) : (
-          <div dangerouslySetInnerHTML={createMarkdown()}></div>
+          <div
+            className={textClasses}
+            dangerouslySetInnerHTML={createMarkdown()}
+          ></div>
         )}
       </div>
     </div>
