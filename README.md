@@ -33,4 +33,4 @@ If I had more time, I would:
 
 - Improve the auto-save UX
 - Organize my CRUD operations better for notes
-- Make
+- Improve redirects and middleware logic
