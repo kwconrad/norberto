@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Norberto (note-taking app)
 
-## Getting Started
+A simple note-taking app for jotting down ideas, thoughts, and @mentioning people you've collaborated with along the way.
 
-First, run the development server:
+Features include:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `@mentions` - mention your friends in your notes, collaboriate, do all that fun stuff.
+- `auto-saving` (it kinda works)
+- `markdown support` -- format your notes with markdown formatting (\*\*, \_\_, etc.) in the note-taking workspace (the modal) and when you save your note, markdown is applied to your note in the note list
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Built with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `TailwindCSS` (styling)
+- `marked` (markdown)
+- `Next.js` with App Router
+- `SWR` fetching and frontend caching
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Getting started
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+Get up and going with npm by running `npm install` then `npm run dev`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Navigate to the root path on whatever port you are using (ie https://localhost:3000/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This will auto-generate a new note-taking session using a uuid (http://localhost:3000/session/d8d03faf-cf26-4b72-ac64-7d0e932b1b41)
 
-## Deploy on Vercel
+Now, to return to your session, just re-use that same url.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Next steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If I had more time, I would:
+
+- Improve the auto-save UX
+- Organize my CRUD operations better for notes
+- Make

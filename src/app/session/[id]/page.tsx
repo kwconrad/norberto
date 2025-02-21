@@ -13,7 +13,7 @@ export default function SessionPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const NOTES_URL = `https://challenge.surfe.com/${id}/notes`;
+  const NOTES_URL = `${process.env.NEXT_PUBLIC_API_URL}/${id}/notes`;
 
   const {
     data: notes,
@@ -40,7 +40,7 @@ export default function SessionPage({
 
   const renderLogo = () => (
     <span className="font-instrument-serif text-4xl text-neutral-900">
-      Notation <span className="-ml-1 font-geist-sans font-normal">™</span>
+      Norberto <span className="-ml-1 font-geist-sans font-normal">™</span>
     </span>
   );
 
