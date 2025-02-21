@@ -34,3 +34,5 @@ If I had more time, I would:
 - Improve the auto-save UX
 - Organize my CRUD operations better for notes
 - Improve redirects and middleware logic
+- Make the note detail editing experience better
+- Make it responsive
